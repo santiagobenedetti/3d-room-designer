@@ -6,7 +6,8 @@ function App() {
 
   return (
     <>
-      <Canvas>
+      <Canvas shadows dpr={[1, 2]} camera={{ position: [30, 10, 30], fov: 45  }}>
+        <color attach="background" args={['#202020']} />
         <BaseLights />
         <Room />
 
