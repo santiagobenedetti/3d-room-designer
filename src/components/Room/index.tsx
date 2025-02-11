@@ -16,7 +16,7 @@ const WALL_HEIGHT = 10;
 
 //Interseccion
 const INTERSECTION_GAP = WALL_DEPTH;
-const VALOR_RANDON_FRAN = 0.15;
+const VALOR_RANDON_FRAN = WALL_DEPTH/2;
 
 // Ajuste de la izquierda
 const LEFT_WALL_NEW_WIDTH = LEFT_WALL_WIDTH - INTERSECTION_GAP + VALOR_RANDON_FRAN;
@@ -41,7 +41,7 @@ const RIGHT_WALL_ROTATION = { x: 0, y: 0, z: 0 };
 
 
 //Piso
-const FLOOR_POSITION = {x:RIGHT_WALL_WIDTH / 2 , y: 0.15, z: LEFT_WALL_WIDTH / 2};
+const FLOOR_POSITION = {x:RIGHT_WALL_WIDTH / 2 - 0.001 , y:WALL_DEPTH/2 , z: LEFT_WALL_WIDTH / 2 -0.001}; // ese -0,001 es  para que no se vea parpadeando 
 
 const Room = () => {
   return (
