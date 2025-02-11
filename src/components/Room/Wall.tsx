@@ -35,7 +35,7 @@ const Wall = ({
       <mesh
         position={[
           0,
-          -heigth / 2 + skirting.height / 2 + skirting.bottomLift,
+          -heigth / 2 + skirting.height / 2 + skirting.bottomLift + depth / 2,
           depth / 2 + skirting.offset,
         ]}
         receiveShadow
