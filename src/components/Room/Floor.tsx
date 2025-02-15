@@ -1,14 +1,19 @@
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader, RepeatWrapping, Vector2 } from "three";
 
+
 const Floor = ({
   leftWallWidth,
   rightWallWidth,
   depth,
+  position,
+  rotation,
 }: {
   leftWallWidth: number;
   rightWallWidth: number;
   depth: number;
+  position: Vec3;
+  rotation: Vec3;
 }) => {
   // Load textures
   const colorMap = useLoader(
@@ -33,20 +38,22 @@ const Floor = ({
   normalMap.repeat.set(2, 2);
 
   return (
-    <mesh
-      position={[rightWallWidth / 2, 0, leftWallWidth / 2]}
-      rotation={[0, 0, 0]}
-      receiveShadow
+    <group
+      position={[position.x, position.y, position.z]}
+      rotation={[rotation.x, rotation.y, rotation.z]}
     >
-      <boxGeometry args={[rightWallWidth, depth, leftWallWidth]} />
-      <meshStandardMaterial
-        map={colorMap}
-        normalMap={normalMap}
-        normalScale={new Vector2(10, 10)}
-        roughnessMap={roughnessMap}
-      />
-    </mesh>
+      <mesh receiveShadow>
+        <boxGeometry args={[rightWallWidth, depth, leftWallWidth]} />
+        <meshStandardMaterial
+          map={colorMap}
+          normalMap={normalMap}
+          normalScale={new Vector2(10, 10)}
+          roughnessMap={roughnessMap}
+        />
+      </mesh>
+    </group>
   );
 };
 
 export default Floor;
+
