@@ -50,7 +50,7 @@ const Room = () => {
       <Wall width={RIGHT_WALL_NEW_WIDTH} heigth={WALL_HEIGHT} depth={WALL_DEPTH} position={RIGHT_WALL_NEW_POSITION} rotation={RIGHT_WALL_ROTATION} />
 
       <Model path='/models/desk/covered/untitled.gltf' scale={1} position={[1.7, 0.3, 6]} rotation={[0, Math.PI / 2, 0]} />
-      <Model path='/models/bed/covered/scene.gltf' scale={0.4} position={[10, 0.1, 4.3]} rotation={[0, 0, 0]} />
+      <Model path='/models/bed/covered/scene.gltf' scale={3.5} position={[10, 0.1, 3]} rotation={[0, Math.PI / 2, 0]} />
       <Model path='/models/plant/scene.gltf' scale={1} position={[1, 3.3, 7.3]} />
       <Model path='/models/coat_hanger/covered/scene.gltf' scale={1.4} position={[2, 0.1, 14]} rotation={[0, 1, 0]}/>
       <Model path='/models/rug/scene.gltf' scale={0.04} position={[11, 0.27, 12]} />
