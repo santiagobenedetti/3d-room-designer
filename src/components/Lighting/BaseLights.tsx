@@ -1,5 +1,5 @@
-import { useHelper } from '@react-three/drei';
-import { DirectionalLightHelper, DirectionalLight } from 'three';
+// import { useHelper } from '@react-three/drei';
+import { DirectionalLight } from 'three';
 import { useRef } from 'react';
 
 const BaseLights = () => {
