@@ -26,8 +26,6 @@ const Model = ({ path, position, rotation, scale }: ModelProps) => {
   React.useEffect(() => {
     gltf.scene.traverse((child) => {
       if ("isMesh" in child) {
-        // Example: Only top parts cast shadows, bottom parts receive shadows
-        console.log(child);
         child.castShadow = true;
         child.receiveShadow = true;
       }
