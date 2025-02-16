@@ -6,8 +6,8 @@ const BaseLights = () => {
   const lightRef = useRef<DirectionalLight>(null!);
   const lightRef2 = useRef<DirectionalLight>(null!);
 
-  useHelper(lightRef, DirectionalLightHelper, 1, '#ffd5ab')
-  useHelper(lightRef2, DirectionalLightHelper, 1, '#ffc58f')
+  // useHelper(lightRef, DirectionalLightHelper, 1, '#ffd5ab')
+  // useHelper(lightRef2, DirectionalLightHelper, 1, '#ffc58f')
 
   return (
     <>

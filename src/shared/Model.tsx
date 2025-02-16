@@ -22,12 +22,13 @@ const Model = ({ path, position, rotation, scale }: ModelProps) => {
   // console.log(nodes, materials);
   const gltf = useLoader(GLTFLoader, path);
 
+  // Add this console log
+  console.log(`Loading model at position:`, position);
+
   // Traverse the scene and enable shadows for all meshes
   React.useEffect(() => {
     gltf.scene.traverse((child) => {
       if ("isMesh" in child) {
-        // Example: Only top parts cast shadows, bottom parts receive shadows
-        console.log(child);
         child.castShadow = true;
         child.receiveShadow = true;
       }
