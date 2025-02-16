@@ -1,5 +1,6 @@
 import { useLoader } from "@react-three/fiber";
-import { TextureLoader, RepeatWrapping, Vector2, Vector3 } from "three";
+import { TextureLoader, RepeatWrapping, Vector2 } from "three";
+import { Vec3 } from "../../shared/Vector";
 
 
 const Floor = ({
@@ -12,8 +13,8 @@ const Floor = ({
   leftWallWidth: number;
   rightWallWidth: number;
   depth: number;
-  position: Vector3;
-  rotation: Vector3;
+  position: Vec3;
+  rotation: Vec3;
 }) => {
   // Load textures
   const colorMap = useLoader(
