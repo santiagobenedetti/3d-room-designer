@@ -1,8 +1,6 @@
 import Model from '../../shared/Model';
 import Floor from './Floor';
-import Wall from './Wall'
-
-
+import Wall from './Wall';
 
 //Profundidad
 const WALL_DEPTH = 0.4;
