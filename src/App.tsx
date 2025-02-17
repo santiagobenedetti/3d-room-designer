@@ -56,10 +56,10 @@ function App() {
         {/* <gridHelper args={[100, 100]} /> */}
 
         <OrbitControls
-          minAzimuthAngle={-Math.PI / 128}
-          maxAzimuthAngle={Math.PI / 2.15}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 2.1}
+          minAzimuthAngle={Math.PI / 20}
+          maxAzimuthAngle={Math.PI / 2.3}
+          minPolarAngle={Math.PI / 6}
+          maxPolarAngle={Math.PI / 2.2}
           enableZoom={true}
           minDistance={10}
           maxDistance={50}

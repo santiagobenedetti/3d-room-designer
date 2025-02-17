@@ -19,15 +19,15 @@ const Floor = ({
   // Load textures
   const colorMap = useLoader(
     TextureLoader,
-    "/textures/WoodPlanks/Wood092_1K-JPG_Color.jpg"
+    "textures/WoodPlanks/Wood092_1K-JPG_Color.jpg"
   );
   const normalMap = useLoader(
     TextureLoader,
-    "/textures/WoodPlanks/Wood092_1K-JPG_NormalDX.jpg"
+    "textures/WoodPlanks/Wood092_1K-JPG_NormalDX.jpg"
   );
   const roughnessMap = useLoader(
     TextureLoader,
-    "/textures/WoodPlanks/Wood092_1K-JPG_Roughness.jpg"
+    "textures/WoodPlanks/Wood092_1K-JPG_Roughness.jpg"
   );
 
   // Configure texture repeating
