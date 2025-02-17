@@ -1,50 +1,36 @@
-# React + TypeScript + Vite
+# 3D Room Designer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Local Setup
 
-Currently, two official plugins are available:
+Run `npm i` or `yarn` to install the dependencies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Run `npm start dev` or `yarn start dev` to start the development server.
 
-## Expanding the ESLint configuration
+## Production Deployment
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The first time you make a deployment, you need to install `gh-pages`
 
-- Configure the top-level `parserOptions` property like this:
+```
+# To install it globally
+sudo npm install -g gh-pages
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Or to install it locally
+npm install gh-pages --save-dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Run `npm run deploy` or `yarn run deploy` to build the project for production and upload it to github automatically.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Important Notes
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+All assets including models, textures, images and sounds are stored in the `public` folder. The `src` folder contains the source code for the project.
+
+To use an asset you should import it like this:
+
+```javascript
+const roughnessMap = useLoader(
+  TextureLoader,
+  "textures/WoodPlanks/Wood092_1K-JPG_Roughness.jpg"
+);
 ```
+
+Note that we are not using a slash at the beginning of the path. This is because the assets are stored in the `public` folder and the path is relative to it. If you use a slash at the beginning of the path, the asset will not be found when deployed to github pages.
