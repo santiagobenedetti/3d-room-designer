@@ -42,8 +42,8 @@ function App() {
         boxShadow: "0 2px 4px rgba(0,0,0,0.5)",
       }}>
         <p style={{ fontSize: "14px" }}>
-          Designed by <a href="https://github.com/santiagobenedetti" target="_blank" rel="noopener noreferrer">Santiago Benedetti</a>
-          and <a href="https://github.com/FranciscoAnnoni" target="_blank" rel="noopener noreferrer">Francisco Annoni</a>
+          Designed by <a style={{color: "white", fontWeight: 'bold'}} href="https://github.com/santiagobenedetti" target="_blank" rel="noopener noreferrer">Santiago Benedetti </a>
+          and <a style={{color: "white", fontWeight: 'bold'}} href="https://github.com/FranciscoAnnoni" target="_blank" rel="noopener noreferrer">Francisco Annoni</a>
         </p>
       </div>
 
