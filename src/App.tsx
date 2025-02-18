@@ -1,56 +1,104 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Canvas } from "@react-three/fiber";
 import Room from "./components/Room";
 import { OrbitControls } from "@react-three/drei";
 import BaseLights from "./components/Lighting/BaseLights";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+} from "@/components/ui/popover";
+import { useRef } from "react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { useTheme } from "@/shared/theme-provider";
+
+import "./index.css";
+import { ModeToggle } from "./shared/mode-toggle";
+import FooterAndBanner from "./components/2d/FooterAndBanner";
 
 function App() {
-  return (
-    <>
-      <div
-        style={{
-          position: "fixed",
-          top: "20px",
-          left: "20px",
-          background: "rgba(72, 72, 94, 0.8)",
-          padding: "10px 20px",
-          borderRadius: "8px",
-          color: "white",
-          fontFamily: "Arial, sans-serif",
-          zIndex: 1000,
-          boxShadow: "0 2px 4px rgba(0,0,0,0.5)",
-        }}
-      >
-        <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>3D Room Creator</h1>
-        <p style={{ fontSize: "14px" }}>
-          This is a 3D room creator to help you design your room.
-        </p>
-        <p style={{ fontSize: "14px" }}>
-          It allows you to explore a 3D model of a room in real-time and share it with your friends.
-        </p>
-      </div>
+  const { theme } = useTheme();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  // const [selectedObject, setSelectedObject] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
 
-      <div style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "20px",
-        background: "rgba(38, 38, 49, 0.8)",
-        padding: "10px 20px",
-        borderRadius: "8px",
-        color: "white",
-        fontFamily: "Arial, sans-serif",
-        zIndex: 1000,
-        boxShadow: "0 2px 4px rgba(0,0,0,0.5)",
-      }}>
-        <p style={{ fontSize: "14px" }}>
-          Designed by <a style={{color: "white", fontWeight: 'bold'}} href="https://github.com/santiagobenedetti" target="_blank" rel="noopener noreferrer">Santiago Benedetti </a>
-          and <a style={{color: "white", fontWeight: 'bold'}} href="https://github.com/FranciscoAnnoni" target="_blank" rel="noopener noreferrer">Francisco Annoni</a>
-        </p>
+  const handleDoubleClick = (event: { stopPropagation: () => void; intersections: { object: React.SetStateAction<null>; }[]; }) => {
+    event.stopPropagation();
+    // console.log(event);
+    // setSelectedObject(event.intersections[0].object);
+    // event.intersections[0].object.scale.set(1.2, 1.2, 1.2);
+    triggerRef.current?.click();
+  };
+
+  return (
+    <section className="w-full h-full">
+      <FooterAndBanner />
+
+      <Popover modal >
+        <PopoverAnchor />
+        <PopoverTrigger
+          ref={triggerRef}
+          style={{ display: "none" }}
+        />
+        <PopoverContent sideOffset={150}>
+          <div className="grid gap-4">
+            <div className="space-y-2">
+              <h4 className="font-medium leading-none">Dimensions</h4>
+              <p className="text-sm text-muted-foreground">
+                Set the dimensions for the layer.
+              </p>
+            </div>
+            <div className="grid gap-2">
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="width">Width</Label>
+                <Input
+                  id="width"
+                  defaultValue="100%"
+                  className="col-span-2 h-8"
+                />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="maxWidth">Max. width</Label>
+                <Input
+                  id="maxWidth"
+                  defaultValue="300px"
+                  className="col-span-2 h-8"
+                />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="height">Height</Label>
+                <Input
+                  id="height"
+                  defaultValue="25px"
+                  className="col-span-2 h-8"
+                />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="maxHeight">Max. height</Label>
+                <Input
+                  id="maxHeight"
+                  defaultValue="none"
+                  className="col-span-2 h-8"
+                />
+              </div>
+            </div>
+          </div>
+        </PopoverContent>
+      </Popover>
+
+      <div className="fixed top-4 right-4 z-10">
+        <ModeToggle />
       </div>
 
       <Canvas shadows dpr={[1, 2]} camera={{ position: [22, 10, 30], fov: 45 }}>
-        <color attach="background" args={["#20202a"]} />
+        <color
+          attach="background"
+          args={[theme === "dark" ? "#20202a" : "#ffffff"]}
+        />
         <BaseLights />
-        <Room />
+        <Room onDoubleClick={handleDoubleClick} />
 
         {/* <axesHelper args={[10]} /> */}
         {/* <gridHelper args={[100, 100]} /> */}
@@ -65,7 +113,7 @@ function App() {
           maxDistance={50}
         />
       </Canvas>
-    </>
+    </section>
   );
 }
 
