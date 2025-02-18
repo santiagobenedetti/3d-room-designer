@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Canvas } from "@react-three/fiber";
 import Room from "./components/Room";
 import { OrbitControls } from "@react-three/drei";
@@ -8,7 +9,7 @@ import {
   PopoverContent,
   PopoverAnchor,
 } from "@/components/ui/popover";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/shared/theme-provider";
@@ -20,13 +21,13 @@ import FooterAndBanner from "./components/2d/FooterAndBanner";
 function App() {
   const { theme } = useTheme();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const [selectedObject, setSelectedObject] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  // const [selectedObject, setSelectedObject] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
 
-  const handleDoubleClick = (event) => {
+  const handleDoubleClick = (event: { stopPropagation: () => void; intersections: { object: React.SetStateAction<null>; }[]; }) => {
     event.stopPropagation();
     // console.log(event);
-    setSelectedObject(event.intersections[0].object);
+    // setSelectedObject(event.intersections[0].object);
     // event.intersections[0].object.scale.set(1.2, 1.2, 1.2);
     triggerRef.current?.click();
   };

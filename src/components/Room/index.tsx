@@ -41,7 +41,8 @@ const RIGHT_WALL_ROTATION = { x: 0, y: 0, z: 0 };
 //Piso
 const FLOOR_POSITION = {x:RIGHT_WALL_WIDTH / 2 - 0.001 , y:WALL_DEPTH/2 , z: LEFT_WALL_WIDTH / 2 -0.001}; // ese -0,001 es  para que no se vea parpadeando 
 
-const Room = ({ onDoubleClick }: { onDoubleClick: (event) => void }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Room = ({ onDoubleClick }: { onDoubleClick: (event: any) => void }) => {
   return (
     <>
     <group onDoubleClick={onDoubleClick}>
