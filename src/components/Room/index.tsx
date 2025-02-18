@@ -42,10 +42,31 @@ const RIGHT_WALL_ROTATION = { x: 0, y: 0, z: 0 };
 const FLOOR_POSITION = {x:RIGHT_WALL_WIDTH / 2 - 0.001 , y:WALL_DEPTH/2 , z: LEFT_WALL_WIDTH / 2 -0.001}; // ese -0,001 es  para que no se vea parpadeando 
 
 const Room = () => {
+
+  const handleDoubleClick = (event) => {
+    event.stopPropagation();
+    console.log(event.intersections[0].object.parent);
+    event.intersections[0].object.material.color.set(45,54,54);
+  }
+
   return (
-    <>
-      <Wall width={LEFT_WALL_NEW_WIDTH} heigth={WALL_HEIGHT} depth={WALL_DEPTH} position={LEFT_WALL_NEW_POSITION} rotation={LEFT_WALL_ROTATION} />
-      <Wall width={RIGHT_WALL_NEW_WIDTH} heigth={WALL_HEIGHT} depth={WALL_DEPTH} position={RIGHT_WALL_NEW_POSITION} rotation={RIGHT_WALL_ROTATION} />
+    <group onDoubleClick={handleDoubleClick}>
+      <Wall 
+        width={LEFT_WALL_NEW_WIDTH} 
+        heigth={WALL_HEIGHT} 
+        depth={WALL_DEPTH} 
+        position={LEFT_WALL_NEW_POSITION} 
+        rotation={LEFT_WALL_ROTATION} 
+        selected={false}
+      />
+      <Wall 
+        width={RIGHT_WALL_NEW_WIDTH} 
+        heigth={WALL_HEIGHT} 
+        depth={WALL_DEPTH} 
+        position={RIGHT_WALL_NEW_POSITION} 
+        rotation={RIGHT_WALL_ROTATION} 
+        selected={false} 
+      />
 
       {/* <Model path='/models/desk/covered/escritorioConSilla.gltf' scale={1} position={[1.7, 0.3, 6]} rotation={[0, Math.PI / 2, 0]} /> */}
       <Model path='models/bed/covered/scene.gltf' scale={3.5} position={[10, 0.1, 3]} rotation={[0, Math.PI / 2, 0]} />
@@ -57,7 +78,7 @@ const Room = () => {
       <Model path='models/sign/scene.gltf' scale={1} position={[13, 0.27, 15]} rotation={[0, -Math.PI / 2, 0]} />
 
       <Floor leftWallWidth={LEFT_WALL_WIDTH} rightWallWidth={RIGHT_WALL_WIDTH} depth={WALL_DEPTH}   position={FLOOR_POSITION} rotation={{ x: 0, y: 0, z: 0 }} />
-    </>
+    </group>
   )
 }
 

@@ -3,6 +3,8 @@ import Room from "./components/Room";
 import { OrbitControls } from "@react-three/drei";
 import BaseLights from "./components/Lighting/BaseLights";
 
+
+
 function App() {
   return (
     <>
@@ -47,7 +49,11 @@ function App() {
         </p>
       </div>
 
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [22, 10, 30], fov: 45 }}>
+      <Canvas 
+        shadows 
+        dpr={[1, 2]} 
+        camera={{ position: [22, 10, 30], fov: 45 }}
+      >
         <color attach="background" args={["#20202a"]} />
         <BaseLights />
         <Room />

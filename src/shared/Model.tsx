@@ -31,7 +31,6 @@ const Model = ({ path, position, rotation, scale }: ModelProps) => {
       }
     });
   }, [gltf]);
-  console.log(gltf);
 
   return (
     // <mesh
